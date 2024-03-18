@@ -60,9 +60,16 @@ public class RhymingDict {
 
     // ********** TO DO 2: Store a rhymeGroup (key) and word (value) in the Dictionary (hashtable) **********
     public static void storeRhyme(DictionaryInterface rhymingDict, String line) {
-
-
-    }
+    	String word = getWord(line);
+    	 String rhymeGroup = getRhymeGroup(line);
+    	 MyLinkedList words = (MyLinkedList) rhymingDict.get(rhymeGroup);
+    	    if (words == null) {
+    	    	words = new MyLinkedList();
+    	        rhymingDict.put(rhymeGroup, words);
+    	    }
+    	   
+    	    words.add(0, word);
+    }    
 
     // Get two random indexes that are not the same
     public static int[] getTwoDifferentRandomIndexes(int length) {
