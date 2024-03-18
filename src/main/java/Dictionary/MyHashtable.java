@@ -100,6 +100,7 @@ public class MyHashtable implements DictionaryInterface {
             
             // d. Increment the size (the number of unique keys you have stored).
              size++;
+		return null;
         }
         // 3. If the location in the table isn't null,
         // that means keys with this colliding hash code have been previously stored.
@@ -132,13 +133,13 @@ public class MyHashtable implements DictionaryInterface {
              
             // b. If you don't find the key in the bucket,
             // then just add a new Entry (with the key and value) to the beginning of the list.
-             table[index].add(0, new Entry(key, value));
+             bucket.add(0, new Entry(key, value));
             // Increment the size.
              size++;
-             }
+             
         return null;
     }
-
+}
     public Object get(String key){
         // 1. Compute an array index given the key
        int index = Math.abs(key.hashCode()) % tableSize;
@@ -147,8 +148,8 @@ public class MyHashtable implements DictionaryInterface {
         // So we can return null.
         if (table[index] == null) {
 			return null;
-		}
-	    else{
+        }
+	else{
         // 4. Linearly search through the bucket (the list),
         // comparing the key for each entry with the key passed into get().
         MyLinkedList bucket = table[index];
@@ -156,11 +157,14 @@ public class MyHashtable implements DictionaryInterface {
             // the Linked List
          for (int i = 0; i < bucket.size(); i++) {
 			Entry e = (Entry) bucket.get(i);
-			if (e.key.equals(key)) {
+	    if (e.key.equals(key)) {
             // If you find a match, return the value.
-				return e.value;
-			}
+		return e.value;
+	    }
 	 }
+        // If the key is not found in the bucket, return null.
+        return null;
+	}
     } // Retrieves the value stored with the key.
 
     public void remove(String key){
