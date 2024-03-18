@@ -79,9 +79,9 @@ public class MyHashtable implements DictionaryInterface {
     }
 
     // Implement these methods
-    public boolean isEmpty() {return true;} // returns true if the Dictionary is empty, false otherwise.
+    public boolean isEmpty() {return size == 0;} // returns true if the Dictionary is empty, false otherwise.
 
-    public int size(){return -1;} //Returns the number of key/value pairs stored in the dictionary.
+    public int size(){return size;} //Returns the number of key/value pairs stored in the dictionary.
 
     // Adds a value stored under the given key. If the key has already been stored in the Dictionary,
     // replaces the value associated with the key and returns the old value. If the key isn't in the dictionary
@@ -110,11 +110,11 @@ public class MyHashtable implements DictionaryInterface {
             // a. Linearly search through the bucket (the list) stored at this array
             // location comparing the key for each entry with the key passed into put().
             for (int i = 0; i < bucket.size(); i++) {
-				Entry e = (Entry) bucket.get(i);
-				if (e.key.equals(key)) {
-					Object oldValue = e.value;
-					e.value = value;
-					return oldValue;
+		Entry e = (Entry) bucket.get(i);
+		if (e.key.equals(key)) {
+			Object oldValue = e.value;
+			e.value = value;
+			return oldValue;
 				}
 			}
                 // If you get a match, this means this key as been previously stored.
@@ -125,18 +125,15 @@ public class MyHashtable implements DictionaryInterface {
                     // NOTE: this is technically not correct as you would need to create a deep copy of the entry,
                     // however, that is outside the realm of this assignment. The code above will be
                     // enough to complete the assignment
-
                    // return old value here
                   //   return oldValue.value;
-             }
         // 3b, a value does not exist for the key
              
             // b. If you don't find the key in the bucket,
             // then just add a new Entry (with the key and value) to the beginning of the list.
              bucket.add(0, new Entry(key, value));
             // Increment the size.
-             size++;
-             
+          size++;    
         return null;
     }
 }
@@ -156,7 +153,7 @@ public class MyHashtable implements DictionaryInterface {
             // Extracting each element in
             // the Linked List
          for (int i = 0; i < bucket.size(); i++) {
-			Entry e = (Entry) bucket.get(i);
+	Entry e = (Entry) bucket.get(i);
 	    if (e.key.equals(key)) {
             // If you find a match, return the value.
 		return e.value;
