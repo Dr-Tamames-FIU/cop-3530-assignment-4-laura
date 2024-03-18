@@ -99,13 +99,13 @@ public class RhymingDict {
         String group1Key = keys[groupIndexes[1]];
 
         // Uncomment to see which word groups were selected
-        // System.out.printf("Create rhyme with groups '%s' and '%s' \n", group0Key, group1Key);
+        System.out.printf("Create rhyme with groups '%s' and '%s' \n", group0Key, group1Key);
 
         MyLinkedList group0 = (MyLinkedList)rhymingDict.get(group0Key);
         MyLinkedList group1 = (MyLinkedList)rhymingDict.get(group1Key);
 
         // Uncomment to check the length of the word sets we selected
-        //System.out.printf("\t%d words, %d words \n", group0.size(), group1.size());
+        System.out.printf("\t%d words, %d words \n", group0.size(), group1.size());
 
         // Pick out word indexes from the two rhyme groups
         // We need four words, so two words from each group
@@ -118,7 +118,7 @@ public class RhymingDict {
         String word1B = (String)group1.get(group1Indexes[1]);
 
         // Uncomment to check which words it picked
-        //System.out.printf("\tWords: %s %s %s %s \n", word0A, word0B, word1A, word1B);
+        System.out.printf("\tWords: %s %s %s %s \n", word0A, word0B, word1A, word1B);
 
         // Choose between two poems
         if (random.nextFloat() > 0.5f)
@@ -130,7 +130,13 @@ public class RhymingDict {
 
     // ********** TO DO #3: Remove any of the unrhymables **********
     public static void removeUnrhymables(DictionaryInterface rhymingDict) {
-
+    	 String[] keys = rhymingDict.getKeys();
+    	 for (String key : keys) {
+    		 MyLinkedList words = (MyLinkedList) rhymingDict.get(key);
+    		 if (words.size() <= 1) {
+    			  rhymingDict.remove(key);
+    		 }
+    	 }
     }
 
     // Once you've implemented your dictionary, you can use the testDictionary function to test
@@ -155,8 +161,8 @@ public class RhymingDict {
     public static void main(String[] args) {
 
         // Uncomment this to test that your hashtable is doing what you expect.
-        // MyHashtable testTable = new MyHashtable(100);
-        // testDictionary(testTable);
+         MyHashtable testTable = new MyHashtable(100);
+         testDictionary(testTable);
 
         // Save a seed.
         // Like in Lab01, the seeds allow us generate the same random numbers (the same poems) again
