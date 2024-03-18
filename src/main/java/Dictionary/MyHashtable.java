@@ -200,9 +200,9 @@ public class MyHashtable implements DictionaryInterface {
 		int currentIndex = 0;
 		for (int i = 0; i < table.length; i++) {
             // For each table location that isn't null
-            if (bucket != null) {
+            MyLinkedList bucket = table[i];
+			if (bucket != null) {
                 // a. Iterate though the bucket (linked list)
-			MyLinkedList bucket = table[i];
 		     for (int j = 0; j < bucket.size(); j++) {
                     // getting the key out of each Entry and storing it in
                     // the array of strings you created in step 1.
