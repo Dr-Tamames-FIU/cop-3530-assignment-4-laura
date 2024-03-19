@@ -130,13 +130,18 @@ public class RhymingDict {
 
     // ********** TO DO #3: Remove any of the unrhymables **********
     public static void removeUnrhymables(DictionaryInterface rhymingDict) {
-    	 String[] keys = rhymingDict.getKeys();
-    	 for (String key : keys) {
-    		 MyLinkedList <String> words = (MyLinkedList <String>) rhymingDict.get(key);
-    		 if (words == null || words.size() <= 1) {
-    			  rhymingDict.remove(key);
+    	// String[] keys = rhymingDict.getKeys();
+	    List<String> keysToRemove = new ArrayList<>();
+    	 //for (String key : keys) {
+	    for (String key : rhymingDict.getKeys()) {
+    		 MyLinkedList<String> words = (MyLinkedList<String>) rhymingDict.get(key);
+    		 if (words.size() <= 1) {
+    			  keysToRemove.add(key);
     		 }
     	 }
+	    for (String key : keysToRemove) {
+		    rhymingDict.remove(key);
+    }
     }
 
     // Once you've implemented your dictionary, you can use the testDictionary function to test
