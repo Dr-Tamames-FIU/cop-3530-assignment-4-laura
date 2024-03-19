@@ -64,11 +64,11 @@ public static void storeRhyme(DictionaryInterface rhymingDict, String line) {
     String rhymeGroup = getRhymeGroup(line);
 
     // Lookup the key (rhyme group) in the dictionary
-    MySortedLinkedList<String> words = (MySortedLinkedList<String>) rhymingDict.get(rhymeGroup);
+    MyLinkedList words = (MyLinkedList) rhymingDict.get(rhymeGroup);
 
     // If the result is null, create a new list and put it in the dictionary
     if (words == null) {
-        words = new MySortedLinkedList<>();
+        words = new MyLinkedList();
         rhymingDict.put(rhymeGroup, words);
     }
         // If the result isn't null, simply add the word to the existing list
