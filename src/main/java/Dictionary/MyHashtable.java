@@ -97,10 +97,8 @@ public class MyHashtable implements DictionaryInterface {
             // b. Add the new Entry for the key/value pair to the list.
             table[index].add(0, new Entry(key, value));
             // c. Set this location in the array equal to the new bucket (list).
-            
             // d. Increment the size (the number of unique keys you have stored).
              size++;
-	
         }
         // 3. If the location in the table isn't null,
         // that means keys with this colliding hash code have been previously stored.
@@ -134,8 +132,8 @@ public class MyHashtable implements DictionaryInterface {
              bucket.add(0, new Entry(key, value));
             // Increment the size.
           size++;    
+	}
         return null;
-    }
 }
     public Object get(String key){
         // 1. Compute an array index given the key
