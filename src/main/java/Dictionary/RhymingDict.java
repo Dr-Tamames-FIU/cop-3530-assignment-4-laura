@@ -64,11 +64,11 @@ public class RhymingDict {
     	 String rhymeGroup = getRhymeGroup(line);
     	 MyLinkedList <String> words = (MyLinkedList<String>) rhymingDict.get(rhymeGroup);
     	    if (words == null) {
-    	    	words = new MyLinkedList();
+    	    	words = new MySortedLinkedList();
     	        rhymingDict.put(rhymeGroup, words);
     	    }
     	   
-    	    words.add(0, word);
+    	    words.add(word);
     }    
 
     // Get two random indexes that are not the same
