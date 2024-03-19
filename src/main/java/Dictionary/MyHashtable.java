@@ -196,7 +196,7 @@ public class MyHashtable implements DictionaryInterface {
         // 1. Create a String[] with a size equal to the number of unique keys in the hashtable
         String[] keys = new String[size];
         // 2. Iterate through the hashtable array.
-		int currentIndex = 0;
+		int index = 0;
 		for (int i = 0; i < table.length; i++) {
             // For each table location that isn't null
             MyLinkedList bucket = table[i];
