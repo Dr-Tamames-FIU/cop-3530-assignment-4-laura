@@ -64,16 +64,18 @@ public static void storeRhyme(DictionaryInterface rhymingDict, String line) {
     String rhymeGroup = getRhymeGroup(line);
 
     // Lookup the key (rhyme group) in the dictionary
-    MyLinkedList words = (MyLinkedList) rhymingDict.get(rhymeGroup);
+    MySortedLinkedList<String> words = (MySortedLinkedList<String>) rhymingDict.get(rhymeGroup);
 
     // If the result is null, create a new list and put it in the dictionary
     if (words == null) {
-        words = new MyLinkedList();
+        words = new MySortedLinkedList<>();
+        words.add(word);
         rhymingDict.put(rhymeGroup, words);
-    }
+    } else {
         // If the result isn't null, simply add the word to the existing list
         words.add(word);
     }
+}
 
     // Get two random indexes that are not the same
     public static int[] getTwoDifferentRandomIndexes(int length) {
