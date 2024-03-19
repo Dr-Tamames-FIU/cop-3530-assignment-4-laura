@@ -62,7 +62,7 @@ public class RhymingDict {
     public static void storeRhyme(DictionaryInterface rhymingDict, String line) {
     	String word = getWord(line);
     	 String rhymeGroup = getRhymeGroup(line);
-    	 MyLinkedList words = (MyLinkedList) rhymingDict.get(rhymeGroup);
+    	 MyLinkedList <String> words = (MyLinkedList<String>) rhymingDict.get(rhymeGroup);
     	    if (words == null) {
     	    	words = new MyLinkedList();
     	        rhymingDict.put(rhymeGroup, words);
@@ -132,8 +132,8 @@ public class RhymingDict {
     public static void removeUnrhymables(DictionaryInterface rhymingDict) {
     	 String[] keys = rhymingDict.getKeys();
     	 for (String key : keys) {
-    		 MyLinkedList words = (MyLinkedList) rhymingDict.get(key);
-    		 if (words.size() <= 1) {
+    		 MyLinkedList <String> words = (MyLinkedList <String>) rhymingDict.get(key);
+    		 if (words == null || words.size() <= 1) {
     			  rhymingDict.remove(key);
     		 }
     	 }
