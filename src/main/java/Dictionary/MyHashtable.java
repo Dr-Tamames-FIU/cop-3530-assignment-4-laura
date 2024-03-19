@@ -100,7 +100,7 @@ public class MyHashtable implements DictionaryInterface {
             
             // d. Increment the size (the number of unique keys you have stored).
              size++;
-		return null;
+	
         }
         // 3. If the location in the table isn't null,
         // that means keys with this colliding hash code have been previously stored.
