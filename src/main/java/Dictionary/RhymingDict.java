@@ -59,19 +59,23 @@ public class RhymingDict {
     }
 
     // ********** TO DO 2: Store a rhymeGroup (key) and word (value) in the Dictionary (hashtable) **********
-    public static void storeRhyme(DictionaryInterface rhymingDict, String line) {
-    	String word = getWord(line);
-    	 String rhymeGroup = getRhymeGroup(line);
-    	 MySortedLinkedList <String> words = (MySortedLinkedList<String>) rhymingDict.get(rhymeGroup);
-    	    if (words == null) {
-    	    	words = new MySortedLinkedList();
-		words.add(word);
-    	        rhymingDict.put(rhymeGroup, words);
-    	    }
-	    else {
-    	    words.add(word);
-	    }
-    }    
+public static void storeRhyme(DictionaryInterface rhymingDict, String line) {
+    String word = getWord(line);
+    String rhymeGroup = getRhymeGroup(line);
+
+    // Lookup the key (rhyme group) in the dictionary
+    MySortedLinkedList<String> words = (MySortedLinkedList<String>) rhymingDict.get(rhymeGroup);
+
+    // If the result is null, create a new list and put it in the dictionary
+    if (words == null) {
+        words = new MySortedLinkedList<>();
+        words.add(word);
+        rhymingDict.put(rhymeGroup, words);
+    } else {
+        // If the result isn't null, simply add the word to the existing list
+        words.add(word);
+    }
+}   
 
     // Get two random indexes that are not the same
     public static int[] getTwoDifferentRandomIndexes(int length) {
@@ -131,8 +135,8 @@ public class RhymingDict {
     }
 
     // ********** TO DO #3: Remove any of the unrhymables **********
-    public static void removeUnrhymables(DictionaryInterface rhymingDict) {
-	    List<String> keysToRemove = new ArrayList<>();
+public static void removeUnrhymables(DictionaryInterface rhymingDict) {
+    List<String> keysToRemove = new ArrayList<>();
     for (String key : rhymingDict.getKeys()) {
         Object value = rhymingDict.get(key);
         if (value instanceof MyLinkedList) {
