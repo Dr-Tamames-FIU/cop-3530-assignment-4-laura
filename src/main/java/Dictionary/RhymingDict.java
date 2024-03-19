@@ -62,13 +62,15 @@ public class RhymingDict {
     public static void storeRhyme(DictionaryInterface rhymingDict, String line) {
     	String word = getWord(line);
     	 String rhymeGroup = getRhymeGroup(line);
-    	 MyLinkedList <String> words = (MyLinkedList<String>) rhymingDict.get(rhymeGroup);
+    	 MySortedLinkedList <String> words = (MySortedLinkedList<String>) rhymingDict.get(rhymeGroup);
     	    if (words == null) {
     	    	words = new MySortedLinkedList();
+		words.add(word);
     	        rhymingDict.put(rhymeGroup, words);
     	    }
-    	   
+	    else {
     	    words.add(word);
+	    }
     }    
 
     // Get two random indexes that are not the same
