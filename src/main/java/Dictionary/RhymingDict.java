@@ -62,7 +62,7 @@ public class RhymingDict {
 public static void storeRhyme(DictionaryInterface rhymingDict, String line) {
 	if (rhymingDict == null || line == null) {
         // Handle null parameters gracefully
-        throw new IllegalArgumentException("Dictionary or line cannot be null");
+        throw new IllegalArgumentException("Dictionary cannot be null");
     }
     String word = getWord(line);
     String rhymeGroup = getRhymeGroup(line);
@@ -142,18 +142,17 @@ public static void storeRhyme(DictionaryInterface rhymingDict, String line) {
 public static void removeUnrhymables(DictionaryInterface rhymingDict) {
     List<String> keysToRemove = new ArrayList<>();
     for (String key : rhymingDict.getKeys()) {
-        Object value = rhymingDict.get(key);
-        if (value instanceof MyLinkedList) {
-            MyLinkedList<String> words = (MyLinkedList<String>) value;
-            if (words.size() <= 1) {
-                keysToRemove.add(key);
+        List<String> words = rhymingDict.get(key);
+        if (words != null && words.size() <= 1) {
+            keysToRemove.add(key);
             }
         }
+        for (String key : keysToRemove) {
+            rhymingDict.remove(key);
+        }
     }
-    for (String key : keysToRemove) {
-        rhymingDict.remove(key);
-    }
-}
+
+
 
     // Once you've implemented your dictionary, you can use the testDictionary function to test
     // that your dictionary is doing what you expect.
