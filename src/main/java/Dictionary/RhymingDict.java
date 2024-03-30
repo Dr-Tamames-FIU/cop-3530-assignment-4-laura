@@ -5,7 +5,7 @@ import java.util.Arrays;
 import List.MyLinkedList;
 import List.MySortedLinkedList;
 
-public class RhymingDict {
+public class RhymingDict { 
     private static Random random;
 
     // Given a pronunciation, get the rhyme group
