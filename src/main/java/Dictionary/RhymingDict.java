@@ -101,7 +101,7 @@ public static void storeRhyme(DictionaryInterface rhymingDict, String line) {
 
         // Get all the keys as an array
         String[] keys = rhymingDict.getKeys();
-        //System.out.printf("%d choices for rhyming groups\n", keys.length);
+        System.out.printf("%d choices for rhyming groups\n", keys.length);
 
         // Pick out the two rhyme groups
         int[] groupIndexes = getTwoDifferentRandomIndexes(keys.length);
