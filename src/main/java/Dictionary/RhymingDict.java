@@ -68,7 +68,7 @@ public static void storeRhyme(DictionaryInterface rhymingDict, String line) {
     String rhymeGroup = getRhymeGroup(line);
 
     // Lookup the key (rhyme group) in the dictionary
-    List<String> words = rhymingDict.get(rhymeGroup);
+    List<String> words = (List<String>) rhymingDict.get(rhymeGroup);
 
     // If the result is null, create a new list and put it in the dictionary
     if (words == null) {
