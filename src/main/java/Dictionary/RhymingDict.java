@@ -95,7 +95,12 @@ public static void storeRhyme(DictionaryInterface rhymingDict, String line) {
 
         // Get all the keys as an array
         String[] keys = rhymingDict.getKeys();
-        System.out.printf("%d choices for rhyming groups\n", keys.length);
+       // Check if there are at least two rhyme groups with more than one word
+        if (keys.length < 2) {
+            System.out.println("Insufficient rhyme groups to generate a poem.");
+            return;
+        }
+       // System.out.printf("%d choices for rhyming groups\n", keys.length);
 
         // Pick out the two rhyme groups
         int[] groupIndexes = getTwoDifferentRandomIndexes(keys.length);
@@ -111,6 +116,10 @@ public static void storeRhyme(DictionaryInterface rhymingDict, String line) {
         // Uncomment to check the length of the word sets we selected
         System.out.printf("\t%d words, %d words \n", group0.size(), group1.size());
 
+	if (group0.size() < 2 || group1.size() < 2) {
+            System.out.println("Insufficient words in rhyme groups to generate a poem.");
+            return;
+        }
         // Pick out word indexes from the two rhyme groups
         // We need four words, so two words from each group
         int[] group0Indexes = getTwoDifferentRandomIndexes(group0.size());
@@ -136,7 +145,7 @@ public static void storeRhyme(DictionaryInterface rhymingDict, String line) {
 public static void removeUnrhymables(DictionaryInterface rhymingDict) {
     List<String> keysToRemove = new ArrayList<>();
     for (String key : rhymingDict.getKeys()) {
-        List<String> words = rhymingDict.get(key);
+        MyLinkedList words = (MyLinkedList) rhymingDict.get(key);
         if (words != null && words.size() <= 1) {
             keysToRemove.add(key);
             }
