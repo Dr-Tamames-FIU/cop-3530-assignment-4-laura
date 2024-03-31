@@ -60,10 +60,6 @@ public class RhymingDict {
 
     // ********** TO DO 2: Store a rhymeGroup (key) and word (value) in the Dictionary (hashtable) **********
 public static void storeRhyme(DictionaryInterface rhymingDict, String line) {
-	if (rhymingDict == null || line == null) {
-        // Handle null parameters gracefully
-        throw new IllegalArgumentException("Dictionary cannot be null");
-    }
     String word = getWord(line);
     String rhymeGroup = getRhymeGroup(line);
 
@@ -73,12 +69,10 @@ public static void storeRhyme(DictionaryInterface rhymingDict, String line) {
     // If the result is null, create a new list and put it in the dictionary
     if (words == null) {
         words = new ArrayList<>();
-        words.add(word);
         rhymingDict.put(rhymeGroup, words);
-    } else {
+    } 
         // If the result isn't null, simply add the word to the existing list
         words.add(word);
-    }
 }
 
     // Get two random indexes that are not the same
